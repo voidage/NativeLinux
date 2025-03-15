@@ -3,7 +3,7 @@
 
 HANDLE hKeyboard;
 
-#define BOOT_IMAGE_SIZE  3476752
+#define BOOT_IMAGE_SIZE 2532208
 
 BOOLEAN Vt100Parsing = FALSE;
 KEYBOARD_INPUT_DATA g_KeyboardData;
