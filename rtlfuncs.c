@@ -127,6 +127,28 @@ RtlCliPutChar(IN WCHAR Char)
 }
 
 NTSTATUS
+RtlClipBackspace(VOID)
+{
+    UNICODE_STRING BackString;
+
+    //
+    // Update the line position
+    //
+    LinePos--;
+
+    //
+    // Finalize this buffer and make it unicode
+    //
+    DisplayBuffer[LinePos] = ANSI_NULL;
+    RtlInitUnicodeString(&BackString, DisplayBuffer);
+
+    //
+    // Display the buffer
+    //
+    return NtDisplayString(&BackString);
+}
+
+NTSTATUS
 RtlCliOpenInputDevice(OUT PHANDLE Handle,
     IN CON_DEVICE_TYPE Type)
 {
