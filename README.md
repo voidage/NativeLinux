@@ -77,7 +77,7 @@ No ANSI sequences due to it being unsupported in Native Mode.
 
 # To do
   - [X] Get Keyboard to work on Windows 2000 and Newer Windows 11 builds
-  - [X] Get backspace to work (Thanks SomeDucky!)
+  - [X] Get backspace to work (Thanks Void (voidage)!)
   - [ ] Fix more crashes during some commands on NativeLinux
   - [ ] Get External keyboards to work (such as USB Desktop Keyboard, etc.) (Thanks PetrNebukin for the report!)
 
