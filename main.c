@@ -11,16 +11,25 @@ KEYBOARD_INPUT_DATA g_KeyboardData;
 void mini_rv32ima_putchar(char c) {
     char string[2] = { c, 0 };
 
-	if (c == '\033') {
-        // We ignore any type of ANSI as they aren't supported in Native
-		Vt100Parsing = TRUE;
-	}
+    if (c == '\033') {
+        //Ignore any type of ANSI, Not supported in Native!
+        Vt100Parsing = TRUE;
+    }
+     
+    if (Vt100Parsing) {
+        if (c == 'm' || c == 'A' || c == 'B' || c == 'C' || c == 'D' || c == 'J') Vt100Parsing = FALSE;
+        return;
+    }
+    
+    if (c == '\b') {
+        RtlCliPutChar('\r');
+        RtlClipBackspace();
+        RtlCliPutChar(' ');
+        RtlCliPutChar('\r');
+        RtlClipBackspace();
+        return;
+    }
 
-	if (Vt100Parsing) {
-		if (c == 'm' || c == 'A' || c == 'B' || c == 'C' || c == 'D') Vt100Parsing = FALSE;
-		return;
-	}
- 
     RtlCliDisplayString(string);
 }
 
